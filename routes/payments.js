@@ -50,6 +50,15 @@ router.patch('/:id', async (req, res) => {
     .single();
 
   if (error) return res.status(500).json({ error: error.message });
+
+  // Auto-record a transaction entry when amount increases
+  const diff = amount_paid - Number(existing.amount_paid);
+  if (diff > 0) {
+    await supabase
+      .from('payment_transactions')
+      .insert([{ payment_id: id, amount: diff, notes: 'Payment recorded' }]);
+  }
+
   res.json(data);
 });
 
