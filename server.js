@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 5000;
 // ── CORS ──────────────────────────────────────────────────────
 const allowedOrigins = process.env.NODE_ENV === 'production'
   ? [
-      process.env.WEBSITE_URL  || 'https://your-website.pages.dev',
-      process.env.DASHBOARD_URL || 'https://your-dashboard.pages.dev',
+      process.env.WEBSITE_URL  || 'https://mehta-distributors-website.pages.dev',
+      process.env.DASHBOARD_URL || 'https://mehta-distributors-dashboard.pages.dev',
     ]
   : '*';
 
