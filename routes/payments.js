@@ -44,7 +44,7 @@ router.patch('/:id', async (req, res) => {
 
   const { data, error } = await supabase
     .from('payments')
-    .update({ amount_paid, status })
+    .update({ amount_paid, status, updated_at: new Date().toISOString() })
     .eq('id', id)
     .select()
     .single();

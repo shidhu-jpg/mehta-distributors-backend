@@ -50,7 +50,7 @@ router.patch('/:id', async (req, res) => {
 
   const { data, error } = await supabase
     .from('inventory')
-    .update({ stock_quantity })
+    .update({ stock_quantity, updated_at: new Date().toISOString() })
     .eq('id', id)
     .select()
     .single();
